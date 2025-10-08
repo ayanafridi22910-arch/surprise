@@ -1,5 +1,5 @@
 // Set the date we're counting down to (e.g., 15 seconds from now for testing the 10-second countdown)
-const countDownDate = new Date().getTime() + 15 * 1000; // Set to 15 seconds from now
+const countDownDate = new Date("2025-10-09T00:00:00").getTime(); // Set to 15 seconds from now
 
 // Get timer elements
 const dayReels = document.querySelectorAll('[data-unit="days"] .digit-reel');
