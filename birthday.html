@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- THIS IS THE BULLETPROOF FIX --- */
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* No scrolling on the entire page */
+        }
+
+        body.birthday-page-body {
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .fireworks-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden; /* --- AND THIS IS THE MOST IMPORTANT FIX --- */
+                               /* This clips any particle that tries to leave the container */
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0;
+            animation: explode 1s ease-out forwards;
+        }
+
+        @keyframes explode {
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(var(--x), var(--y)) scale(0);
+                opacity: 0;
+            }
+        }
+
+        .birthday-container {
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .birthday-text {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(3rem, 15vw, 8rem);
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+
+        .birthday-text span {
+            display: inline-block;
+            opacity: 0;
+            animation: fadeInWord 0.8s ease-out forwards;
+        }
+
+        .birthday-text span:nth-child(1) { animation-delay: 0s; }
+        .birthday-text span:nth-child(2) { animation-delay: 0.5s; }
+        .birthday-text span:nth-child(3) { animation-delay: 1.5s; }
+        .birthday-text span:nth-child(4) { animation-delay: 2.5s; color: #f1c40f; }
+
+        @keyframes fadeInWord {
+            from {
+                opacity: 0;
+                transform: translateY(20px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        #open-surprise-button {
+            margin-top: 30px;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: #333;
+            background: linear-gradient(45deg, #f1c40f, #f39c12);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            animation: button-appear 1s ease-out;
+            transform-origin: bottom;
+        }
+
+        #open-surprise-button:hover {
+            transform: scale(1.05);
+        }
+
+        @keyframes button-appear {
+            from {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+    </head>
+<body class="birthday-page-body">
+
+    <div class="fireworks-container"></div>
+
+    <div class="birthday-container">
+        <h1 class="birthday-text">
+            <span>Happy</span>
+            <span>Birthday</span>
+            <span>Meri</span>
+            <span>Buggu</span>
+        </h1>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const fireworksContainer = document.querySelector('.fireworks-container');
+            const birthdayContainer = document.querySelector('.birthday-container');
+
+            function createExplosion(xPos, yPos) {
+                const numParticles = Math.floor(Math.random() * 40) + 30;
+                const explosionDuration = 1000;
+
+                for (let i = 0; i < numParticles; i++) {
+                    const particle = document.createElement('div');
+                    particle.className = 'particle';
+                    particle.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                    particle.style.left = xPos;
+                    particle.style.top = yPos;
+
+                    const angle = Math.random() * Math.PI * 2;
+                    const velocity = Math.random() * 30 + 20;
+                    const x = Math.cos(angle) * velocity;
+                    const y = Math.sin(angle) * velocity;
+                    const rotation = Math.random() * 360;
+                    const size = Math.random() * 4 + 2;
+
+                    particle.style.width = `${size}px`;
+                    particle.style.height = `${size}px`;
+                    particle.style.setProperty('--x', `${x}vmin`);
+                    particle.style.setProperty('--y', `${y}vmin`);
+                    particle.style.setProperty('--r', `${rotation}deg`);
+                    particle.style.animationDuration = `${explosionDuration / 1000}s`;
+
+                    fireworksContainer.appendChild(particle);
+
+                    setTimeout(() => {
+                        particle.remove();
+                    }, explosionDuration);
+                }
+            }
+
+            function createRandomExplosion() {
+                const xPos = (Math.random() * 90 + 5) + 'vw';
+                const yPos = (Math.random() * 80 + 10) + 'vh';
+                createExplosion(xPos, yPos);
+            }
+
+            setTimeout(() => {
+                setInterval(createRandomExplosion, 400);
+            }, 1000);
+
+            const happyBirthdayAnimationDuration = 3500; 
+            const delayAfterAnimation = 2000;
+            const totalDelay = happyBirthdayAnimationDuration + delayAfterAnimation;
+
+            function showOpenButton() {
+                const openButton = document.createElement('button');
+                openButton.id = 'open-surprise-button';
+                openButton.innerText = 'Click Me For Your Surprise!';
+                
+                openButton.addEventListener('click', () => {
+                    window.location.href = 'final_surprise.html'; 
+                });
+
+                birthdayContainer.appendChild(openButton);
+            }
+
+            setTimeout(showOpenButton, totalDelay);
+
+        });
+    </script>
+    </body>
+</html>

@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, My Buggu! ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Montserrat:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Montserrat:wght@400&display=swap');
+
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #0d1117;
+            color: #e6e6e6;
+            overflow-x: hidden;
+            background-image: linear-gradient(rgba(13, 17, 23, 0.9), rgba(13, 17, 23, 1)), url('https://images.unsplash.com/photo-1519666133604-421b4a0219c6?q=80&w=1974&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .main-container { padding: 20px 40px; max-width: 900px; margin: 50px auto; background-color: rgba(0, 0, 0, 0.75); border-radius: 20px; text-align: center; border: 1px solid transparent; position: relative; animation: rainbow-glow 8s linear infinite; }
+        @keyframes rainbow-glow {
+            0% { border-color: #ff4757; box-shadow: 0 0 30px #ff4757; }
+            25% { border-color: #ffa502; box-shadow: 0 0 30px #ffa502; }
+            50% { border-color: #2ed573; box-shadow: 0 0 30px #2ed573; }
+            75% { border-color: #1e90ff; box-shadow: 0 0 30px #1e90ff; }
+            100% { border-color: #ff4757; box-shadow: 0 0 30px #ff4757; }
+        }
+
+        header h1 { font-family: 'Poppins', sans-serif; font-size: clamp(2.2rem, 8vw, 4rem); font-weight: 700; color: #ffd700; text-shadow: 0 0 15px rgba(255, 215, 0, 0.7); margin-bottom: 5px; }
+        header p { font-size: clamp(1rem, 4vw, 1.2rem); color: #f1f2f6; margin-top: 0; }
+        .fade-in { opacity: 0; transform: translateY(30px); animation: fadeInSlideUp 1s ease-out forwards; }
+        .delay-1 { animation-delay: 0.5s; }
+        .delay-2 { animation-delay: 1.0s; }
+        @keyframes fadeInSlideUp { to { opacity: 1; transform: translateY(0); } }
+
+        .slider-section { margin: 40px 0; position: relative; padding: 0 50px; }
+        .slider-section h2 { color: #f1f2f6; font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 1.8em; margin-bottom: 20px; }
+        .message-slider-wrapper { overflow: hidden; border-radius: 10px; background: rgba(255, 255, 255, 0.05); box-shadow: inset 0 0 10px rgba(0,0,0,0.5); }
+        .message-slider { display: flex; transition: transform 0.5s ease-in-out; }
+        
+        /* --- THIS IS THE FIX --- */
+        .slide {
+            min-width: 100%;
+            box-sizing: border-box;
+            padding: 30px 40px;
+            min-height: 150px; /* Changed from height to min-height */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .slide p { font-size: 1.1em; line-height: 1.6; color: #f0f0f0; margin: 0; }
+        .slider-nav { position: absolute; top: 50%; /* Centered vertically */ transform: translateY(-50%); background-color: rgba(255, 255, 255, 0.2); border: 1px solid rgba(255, 255, 255, 0.3); color: white; padding: 10px 15px; border-radius: 50%; cursor: pointer; font-size: 1.2em; transition: all 0.3s ease; z-index: 10; }
+        .slider-nav:hover { background-color: rgba(255, 255, 255, 0.4); transform: translateY(-50%) scale(1.1); }
+        .prev-slide { left: 10px; }
+        .next-slide { right: 10px; }
+
+        .feature-grid { margin: 50px 0; }
+        .feature-grid h2 { color: #f1f2f6; font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 1.8em; }
+        .grid-items { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+        .feature-button { color: #fff; border: none; padding: 15px 20px; border-radius: 50px; font-size: 1.1em; font-weight: bold; cursor: pointer; transition: all 0.3s ease; font-family: 'Poppins', sans-serif; }
+        .feature-button:hover { transform: translateY(-5px) scale(1.05); }
+        .feature-button i { margin-right: 10px; }
+        .grid-items .feature-button:nth-child(1) { background: #ff4757; box-shadow: 0 4px 15px rgba(255, 71, 87, 0.5); }
+        .grid-items .feature-button:nth-child(2) { background: #e056fd; box-shadow: 0 4px 15px rgba(224, 86, 253, 0.5); }
+        .grid-items .feature-button:nth-child(3) { background: #2ed573; box-shadow: 0 4px 15px rgba(46, 213, 115, 0.5); }
+        .grid-items .feature-button:nth-child(4) { background: #1e90ff; box-shadow: 0 4px 15px rgba(30, 144, 255, 0.5); }
+
+        footer { margin-top: 40px; color: rgba(255, 255, 255, 0.6); }
+
+        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0, 0, 0, 0.9); align-items: center; justify-content: center; animation: fadeIn 0.5s; }
+        .modal-content { background-color: #161b22; margin: auto; padding: 40px; border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 15px; width: 90%; max-width: 600px; position: relative; text-align: center; box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); }
+        .close-button { color: #aaa; position: absolute; top: 15px; right: 25px; font-size: 28px; font-weight: bold; cursor: pointer; }
+        .close-button:hover { color: #fff; }
+        .huge-text-container { display: flex; justify-content: center; align-items: center; gap: 20px; }
+        .huge-text { font-size: clamp(4rem, 20vw, 10rem); font-weight: bold; color: #ff4757; text-shadow: 0 0 20px #ff4757; opacity: 0; animation: popIn 0.5s ease-out forwards; }
+        .animate-pop-in-2 { animation-delay: 0.3s; }
+        .animate-pop-in-3 { animation-delay: 0.6s; }
+        @keyframes popIn { 0% { transform: scale(0.5); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+
+        .fullscreen-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 2000; overflow: hidden; }
+        #kiss-overlay { background: radial-gradient(circle, rgba(255,105,180,0.8) 0%, rgba(255,20,147,0.9) 100%); }
+        .stop-button { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); background: #fff; color: #000; border: none; padding: 15px 30px; border-radius: 50px; font-size: 1.2em; font-weight: bold; cursor: pointer; z-index: 2010; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+        .kiss-emoji { position: absolute; font-size: 2rem; animation: float-up 5s linear infinite; user-select: none; }
+        @keyframes float-up { 0% { bottom: -50px; opacity: 1; } 100% { bottom: 100vh; opacity: 0; transform: rotate(360deg); } }
+
+        #popper-game-overlay { background: radial-gradient(circle, rgba(224,86,253,0.8) 0%, rgba(139,0,139,0.9) 100%); cursor: pointer; }
+        .game-ui { position: absolute; top: 20px; left: 20px; right: 20px; display: flex; justify-content: space-between; color: #fff; font-size: 1.5em; font-weight: bold; text-shadow: 2px 2px 4px #000; }
+        #popper-message { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #fff; font-size: 3em; font-weight: bold; text-shadow: 3px 3px 6px #000; text-align: center; }
+        .popper-heart { position: absolute; font-size: 2.5rem; user-select: none; animation: appear-and-fade 2s ease-out forwards; }
+        @keyframes appear-and-fade {
+            0% { transform: scale(0); opacity: 0; }
+            50% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(1); opacity: 0; }
+        }
+        .popper-heart.popped { animation: pop-effect 0.3s ease-out forwards; }
+        @keyframes pop-effect {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(2); opacity: 0; }
+        }
+
+        .puzzle-overlay { display: none; align-items: center; justify-content: center; background: rgba(0,0,0,0.95); }
+        .puzzle-box { background: #161b22; padding: 30px; border-radius: 15px; width: 90%; max-width: 700px; text-align: center; }
+        .puzzle-slots-container, .puzzle-letters-container { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin: 20px 0; min-height: 60px; }
+        .puzzle-slot { width: 50px; height: 50px; background: rgba(255,255,255,0.1); border: 2px dashed #555; display: flex; justify-content: center; align-items: center; font-size: 1.5em; }
+        .puzzle-letter { width: 50px; height: 50px; background: #1e90ff; color: #fff; display: flex; justify-content: center; align-items: center; font-size: 1.5em; cursor: grab; border-radius: 5px; }
+        #puzzle-result { margin-top: 20px; font-size: 1.2em; font-weight: bold; color: #2ed573; }
+    </style>
+</head>
+<body>
+
+    <div class="main-container">
+        <header class="fade-in">
+            <h1>Happy Birthday, Meri Buggu</h1>
+            <p>A Journey Through Our Infinite Love Story...</p>
+        </header>
+        <section class="slider-section fade-in delay-1">
+            <h2>My Heartfelt Wishes For You...</h2>
+            <div class="message-slider-wrapper">
+                <div class="message-slider">
+                    <div class="slide"><p>Oo meri pyari Buggu, Happy Birthday Aaj meri pyari si jaan 15 saal ki ho gai❤️. Aaj ka din sabse special hai mere liye. </p></div>
+                    <div class="slide"><p>Tum meri duniya ho, meri taakat ho, aur meri har smile ki wajah ho. Allah tumhe duniya ki saari khushiyan de. ❤️</p></div>
+                    <div class="slide"><p>Aur ham ye promise aaj bhi kiye the aur hamesha karenge, ki chahe kuch bhi ho jaye ham to tumhara picha nahi chorne wale ab 😊 aur hamesha tumhara khayal rakhunga, tumko hamesha support karenge, aur tumko itna pyaar karenge ki us level tak shayad ki koi pahuch paye ❤️. Happy Birthday!</p></div>
+                    <div class="slide"><p>Aur Chahe mere life me kitna bhi dikkat aa jaye kita bhi taqlif aa jaye tum mere liye meri first priority ho hamesha 😊, chahe tumko koi pyar de na de, koi tumpe bharosa kare na kare, lekin ham hamesha karte hai,❤️ tumko itna acha se jante hai na ki itna tum khud nahi janti hai apne bare me . Isliye. I Love YOU!😘❤️</p></div>
+                    <div class="slide"><p> pata hai pagli jab ham tumko dekhte hai na hamko yakin nahi hota hai ki tum meri ho sach me😊, ham kabhi nahi soche the ki duniya ki itni pyari ladki meri hogi, itni loyal, itni caring, itna pyar karne walo❤️. </p></div>
+                    <div class="slide"><p>Aaj ham tumhara pura jitna naam rakhe hai na sab batate hai ek sath thik to ek baar right slide karo 😘</p></div>
+                    <div class="slide"><p>1. Buggu 2. Tuggu 3. puggu 4.Duggu 5. wifi 6. wifey 7. pagli 8. sweetheart 9. jaan 10. faguniya 11. thaguniya 12. bhujiya 13. Buggy 14. Puggy 15. suggy 16. Duggy 17. Vijaya 18. Viji 19. takli 20. babu 21. baby 22. tiniya 😘❤️</p></div>
+                </div>
+            </div>
+            <button class="slider-nav prev-slide"><i class="fas fa-chevron-left"></i></button>
+            <button class="slider-nav next-slide"><i class="fas fa-chevron-right"></i></button>
+        </section>
+        <section class="feature-grid fade-in delay-2">
+            <h2>Some Fun & Love For You!</h2>
+            <div class="grid-items">
+                <button id="kiss-button" class="feature-button"><i class="fas fa-kiss-wink-heart"></i> Endless Kisses!</button>
+                <button id="popper-game-button" class="feature-button"><i class="fas fa-burst"></i> Heart Popper!</button>
+                <button id="love-you-button" class="feature-button"><i class="fas fa-heart"></i> My Love For You</button>
+                <button id="puzzle-game-button" class="feature-button"><i class="fas fa-puzzle-piece"></i> Love Puzzle</button>
+            </div>
+        </section>
+        <footer>
+            <p>Made with all my love by Ayan Afridi ❤️</p>
+        </footer>
+    </div>
+    <div id="kiss-overlay" class="fullscreen-overlay"><button id="stop-kiss-button" class="stop-button">Stop Kisses</button></div>
+    <div id="popper-game-overlay" class="fullscreen-overlay">
+        <div class="game-ui">
+            <div id="popper-score">Score: 0</div>
+            <div id="popper-timer">Time: 15</div>
+        </div>
+        <div id="popper-message"></div>
+        <button id="close-popper-game-button" class="stop-button" style="display: none;">Play Again</button>
+    </div>
+    <div id="love-you-modal" class="modal">
+        <div class="modal-content huge-text-container">
+            <span class="close-button">&times;</span>
+            <div class="huge-text">I</div>
+            <div class="huge-text animate-pop-in-2">❤️</div>
+            <div class="huge-text animate-pop-in-3">YOU!</div>
+        </div>
+    </div>
+    <div id="puzzle-game-overlay" class="fullscreen-overlay puzzle-overlay">
+        <div class="puzzle-box">
+            <h2>Unscramble The Secret Message!</h2>
+            <div id="puzzle-slots" class="puzzle-slots-container"></div>
+            <div id="puzzle-letters" class="puzzle-letters-container"></div>
+            <div id="puzzle-result"></div>
+            <button id="close-puzzle-game-button" class="stop-button">Close</button>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const slider = document.querySelector('.message-slider');
+            const slides = document.querySelectorAll('.slide');
+            const prevBtn = document.querySelector('.prev-slide');
+            const nextBtn = document.querySelector('.next-slide');
+            let currentSlide = 0;
+            function showSlide(index) {
+                if (index >= slides.length) currentSlide = 0;
+                else if (index < 0) currentSlide = slides.length - 1;
+                slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+            }
+            nextBtn.addEventListener('click', () => { currentSlide++; showSlide(currentSlide); });
+            prevBtn.addEventListener('click', () => { currentSlide--; showSlide(currentSlide); });
+
+            document.getElementById('love-you-button').addEventListener('click', () => {
+                document.getElementById('love-you-modal').style.display = 'flex';
+            });
+            document.querySelectorAll('.close-button').forEach(button => {
+                button.addEventListener('click', () => {
+                    button.closest('.modal').style.display = 'none';
+                });
+            });
+
+            const kissOverlay = document.getElementById('kiss-overlay');
+            const kissButton = document.getElementById('kiss-button');
+            const stopKissButton = document.getElementById('stop-kiss-button');
+            let kissInterval;
+            kissButton.addEventListener('click', () => {
+                kissOverlay.style.display = 'block';
+                kissInterval = setInterval(createKiss, 200);
+            });
+            stopKissButton.addEventListener('click', () => {
+                kissOverlay.style.display = 'none';
+                clearInterval(kissInterval);
+                document.querySelectorAll('.kiss-emoji').forEach(kiss => kiss.remove());
+            });
+            function createKiss() {
+                const kiss = document.createElement('div');
+                kiss.classList.add('kiss-emoji');
+                kiss.textContent = '😘';
+                kiss.style.left = Math.random() * 100 + 'vw';
+                kiss.style.animationDuration = Math.random() * 2 + 3 + 's';
+                kissOverlay.appendChild(kiss);
+                setTimeout(() => { kiss.remove(); }, 5000);
+            }
+
+            const popperOverlay = document.getElementById('popper-game-overlay');
+            const popperButton = document.getElementById('popper-game-button');
+            const closePopperButton = document.getElementById('close-popper-game-button');
+            const scoreDisplay = document.getElementById('popper-score');
+            const timerDisplay = document.getElementById('popper-timer');
+            const messageDisplay = document.getElementById('popper-message');
+            let score = 0;
+            let timer = 15;
+            let gameInterval;
+            let timerInterval;
+            popperButton.addEventListener('click', startPopperGame);
+            closePopperButton.addEventListener('click', () => { popperOverlay.style.display = 'none'; });
+            function startPopperGame() {
+                score = 0;
+                timer = 15;
+                scoreDisplay.textContent = `Score: ${score}`;
+                timerDisplay.textContent = `Time: ${timer}`;
+                messageDisplay.textContent = '';
+                closePopperButton.style.display = 'none';
+                popperOverlay.style.display = 'block';
+                gameInterval = setInterval(createPopperHeart, 600);
+                timerInterval = setInterval(updateTimer, 1000);
+            }
+            function updateTimer() {
+                timer--;
+                timerDisplay.textContent = `Time: ${timer}`;
+                if (timer <= 0) endPopperGame();
+            }
+            function createPopperHeart() {
+                const heart = document.createElement('div');
+                heart.classList.add('popper-heart');
+                heart.textContent = '❤️';
+                heart.style.left = Math.random() * 90 + 'vw';
+                heart.style.top = Math.random() * 80 + 'vh';
+                heart.style.transform = `scale(${Math.random() * 0.5 + 0.8})`;
+                heart.addEventListener('click', () => {
+                    score++;
+                    scoreDisplay.textContent = `Score: ${score}`;
+                    heart.classList.add('popped');
+                    setTimeout(() => { heart.remove(); }, 300);
+                });
+                popperOverlay.appendChild(heart);
+                setTimeout(() => { heart.remove(); }, 2000);
+            }
+            function endPopperGame() {
+                clearInterval(gameInterval);
+                clearInterval(timerInterval);
+                messageDisplay.textContent = `Game Over!\nYour Score: ${score}`;
+                closePopperButton.style.display = 'block';
+            }
+
+            const puzzleOverlay = document.getElementById('puzzle-game-overlay');
+            const puzzleButton = document.getElementById('puzzle-game-button');
+            const closePuzzleButton = document.getElementById('close-puzzle-game-button');
+            const puzzleSlotsContainer = document.getElementById('puzzle-slots');
+            const puzzleLettersContainer = document.getElementById('puzzle-letters');
+            const puzzleResult = document.getElementById('puzzle-result');
+            const puzzlePhrase = "MYBUGGU";
+            let draggedLetter = null;
+            puzzleButton.addEventListener('click', () => {
+                setupPuzzle();
+                puzzleOverlay.style.display = 'flex';
+            });
+            closePuzzleButton.addEventListener('click', () => { puzzleOverlay.style.display = 'none'; });
+            function setupPuzzle() {
+                puzzleSlotsContainer.innerHTML = '';
+                puzzleLettersContainer.innerHTML = '';
+                puzzleResult.textContent = '';
+                let shuffledLetters = puzzlePhrase.split('').sort(() => Math.random() - 0.5);
+                for (let i = 0; i < puzzlePhrase.length; i++) {
+                    const slot = document.createElement('div');
+                    slot.classList.add('puzzle-slot');
+                    slot.dataset.index = i;
+                    puzzleSlotsContainer.appendChild(slot);
+                }
+                shuffledLetters.forEach(letter => {
+                    const letterEl = document.createElement('div');
+                    letterEl.classList.add('puzzle-letter');
+                    letterEl.textContent = letter;
+                    letterEl.draggable = true;
+                    puzzleLettersContainer.appendChild(letterEl);
+                });
+                addDragAndDropListeners();
+            }
+            function addDragAndDropListeners() {
+                const letters = document.querySelectorAll('.puzzle-letter');
+                const slots = document.querySelectorAll('.puzzle-slot');
+                letters.forEach(letter => {
+                    letter.addEventListener('dragstart', (e) => { draggedLetter = e.target; });
+                });
+                slots.forEach(slot => {
+                    slot.addEventListener('dragover', (e) => { e.preventDefault(); });
+                    slot.addEventListener('drop', (e) => {
+                        e.preventDefault();
+                        if (e.target.classList.contains('puzzle-slot') && e.target.childElementCount === 0) {
+                            e.target.appendChild(draggedLetter);
+                            checkPuzzle();
+                        }
+                    });
+                });
+                puzzleLettersContainer.addEventListener('dragover', e => e.preventDefault());
+                puzzleLettersContainer.addEventListener('drop', e => {
+                    e.preventDefault();
+                    puzzleLettersContainer.appendChild(draggedLetter);
+                });
+            }
+            function checkPuzzle() {
+                let currentGuess = '';
+                document.querySelectorAll('.puzzle-slot').forEach(slot => {
+                    if (slot.firstChild) currentGuess += slot.firstChild.textContent;
+                });
+                if (currentGuess.length === puzzlePhrase.length) {
+                    if (currentGuess === puzzlePhrase) {
+                        puzzleResult.textContent = 'You Solved It! You are my world!';
+                        puzzleResult.style.color = '#2ed573';
+                    } else {
+                        puzzleResult.textContent = 'Not quite... Try again!';
+                        puzzleResult.style.color = '#ff4757';
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
