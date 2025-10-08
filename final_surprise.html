@@ -43,19 +43,9 @@
         .message-slider-wrapper { overflow: hidden; border-radius: 10px; background: rgba(255, 255, 255, 0.05); box-shadow: inset 0 0 10px rgba(0,0,0,0.5); }
         .message-slider { display: flex; transition: transform 0.5s ease-in-out; }
         
-        /* --- THIS IS THE FIX --- */
-        .slide {
-            min-width: 100%;
-            box-sizing: border-box;
-            padding: 30px 40px;
-            min-height: 150px; /* Changed from height to min-height */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
+        .slide { min-width: 100%; box-sizing: border-box; padding: 30px 40px; min-height: 150px; display: flex; align-items: center; justify-content: center; }
         .slide p { font-size: 1.1em; line-height: 1.6; color: #f0f0f0; margin: 0; }
-        .slider-nav { position: absolute; top: 50%; /* Centered vertically */ transform: translateY(-50%); background-color: rgba(255, 255, 255, 0.2); border: 1px solid rgba(255, 255, 255, 0.3); color: white; padding: 10px 15px; border-radius: 50%; cursor: pointer; font-size: 1.2em; transition: all 0.3s ease; z-index: 10; }
+        .slider-nav { position: absolute; top: 50%; transform: translateY(-50%); background-color: rgba(255, 255, 255, 0.2); border: 1px solid rgba(255, 255, 255, 0.3); color: white; padding: 10px 15px; border-radius: 50%; cursor: pointer; font-size: 1.2em; transition: all 0.3s ease; z-index: 10; }
         .slider-nav:hover { background-color: rgba(255, 255, 255, 0.4); transform: translateY(-50%) scale(1.1); }
         .prev-slide { left: 10px; }
         .next-slide { right: 10px; }
@@ -93,16 +83,9 @@
         .game-ui { position: absolute; top: 20px; left: 20px; right: 20px; display: flex; justify-content: space-between; color: #fff; font-size: 1.5em; font-weight: bold; text-shadow: 2px 2px 4px #000; }
         #popper-message { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #fff; font-size: 3em; font-weight: bold; text-shadow: 3px 3px 6px #000; text-align: center; }
         .popper-heart { position: absolute; font-size: 2.5rem; user-select: none; animation: appear-and-fade 2s ease-out forwards; }
-        @keyframes appear-and-fade {
-            0% { transform: scale(0); opacity: 0; }
-            50% { transform: scale(1.2); opacity: 1; }
-            100% { transform: scale(1); opacity: 0; }
-        }
+        @keyframes appear-and-fade { 0% { transform: scale(0); opacity: 0; } 50% { transform: scale(1.2); opacity: 1; } 100% { transform: scale(1); opacity: 0; } }
         .popper-heart.popped { animation: pop-effect 0.3s ease-out forwards; }
-        @keyframes pop-effect {
-            0% { transform: scale(1); opacity: 1; }
-            100% { transform: scale(2); opacity: 0; }
-        }
+        @keyframes pop-effect { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(2); opacity: 0; } }
 
         .puzzle-overlay { display: none; align-items: center; justify-content: center; background: rgba(0,0,0,0.95); }
         .puzzle-box { background: #161b22; padding: 30px; border-radius: 15px; width: 90%; max-width: 700px; text-align: center; }
@@ -110,10 +93,37 @@
         .puzzle-slot { width: 50px; height: 50px; background: rgba(255,255,255,0.1); border: 2px dashed #555; display: flex; justify-content: center; align-items: center; font-size: 1.5em; }
         .puzzle-letter { width: 50px; height: 50px; background: #1e90ff; color: #fff; display: flex; justify-content: center; align-items: center; font-size: 1.5em; cursor: grab; border-radius: 5px; }
         #puzzle-result { margin-top: 20px; font-size: 1.2em; font-weight: bold; color: #2ed573; }
+
+
+        /* --- THIS IS THE FIX FOR MOBILE --- */
+        @media (max-width: 600px) {
+            .main-container {
+                margin: 20px 10px;
+                padding: 20px 15px;
+            }
+
+            .slider-section {
+                padding: 0 45px; /* Buttons ke liye side me thodi space */
+            }
+
+            .slide {
+                padding: 20px 10px; /* Text ke aas-paas space kam kiya */
+            }
+            
+            .grid-items {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .slider-nav {
+                /* Buttons ko phone par thoda bada kiya, taaki aasaani se click ho */
+                padding: 12px 18px;
+            }
+        }
+
     </style>
 </head>
 <body>
-
     <div class="main-container">
         <header class="fade-in">
             <h1>Happy Birthday, Meri Buggu</h1>
@@ -176,6 +186,7 @@
     </div>
     
     <script>
+        // All JavaScript remains the same
         document.addEventListener('DOMContentLoaded', () => {
             const slider = document.querySelector('.message-slider');
             const slides = document.querySelectorAll('.slide');
